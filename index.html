@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mick</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script src="musica1.js"></script>
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        background: #000;
+    }
+
+    body {
+        background-image: url('https://xatimg.com/image/9A5OdmLtjDSO.gif');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* Neblina escura */
+    .mist {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: rgba(0, 0, 0, 0.45);
+        mix-blend-mode: multiply;
+        animation: mistFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes mistFloat {
+        0%, 100% { opacity: 0.45; }
+        50% { opacity: 0.60; }
+    }
+
+    /* Flash relâmpago */
+    .lightning {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: white;
+        opacity: 0;
+        animation: lightningFlash 12s infinite;
+    }
+
+    @keyframes lightningFlash {
+        0%   { opacity: 0; }
+        72%  { opacity: 0; }
+        73%  { opacity: 0.4; }
+        74%  { opacity: 0; }
+        75%  { opacity: 0.8; }
+        76%  { opacity: 0; }
+        100% { opacity: 0; }
+    }
+
+    /* Vinheta escura */
+    .overlay {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
+    }
+
+    /* ------- LOGO CIRCULAR ------- */
+    .logo {
+        position: fixed;
+        top: 155px;
+        left: 355px;
+        
+        width: 180px;
+        height: 180px;
+
+        border-radius: 50%;
+        overflow: hidden;
+
+        opacity: 0;
+        animation: introEffect 1.1s ease forwards;
+        transition: transform 0.35s ease;
+    }
+
+    .logo:hover {
+        transform: scale(1.09) rotate(6deg);
+    }
+
+    @keyframes introEffect {
+        0% {
+            opacity: 0;
+            transform: scale(0.8) rotate(-12deg);
+        }
+        60% {
+            opacity: 1;
+            transform: scale(1.06) rotate(4deg);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+    }
+</style>
+
+</head>
+<body>
+
+    <!-- LOGO REDONDA -->
+    <img class="logo" src="https://xatimg.com/image/bdjzEgHhU3lD.gif" alt="Logo">
+
+    <!-- EFEITOS DE SOMBRA -->
+    <div class="mist"></div>
+    <div class="lightning"></div>
+    <div class="overlay"></div>
+
+    <!-- ROOT DO REACT -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- BOTÃO DE SOM -->
+    <button class="toggle-play">
+        <i id="sound" class="material-icons" style="font-size:41px">music_note</i>
+    </button>
+
+</body>
+</html>
